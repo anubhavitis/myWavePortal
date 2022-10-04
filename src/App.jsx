@@ -40,7 +40,7 @@ const findMetaMaskAccount = async () => {
 const App = () => {
   const [message, setMessage] = useState("This is a message");
   const [currentAccount, setCurrentAccount] = useState("");
-  const contractAddress = "0x7020268DC47CcCB0C5cD3C117E8D01BAC484D219";
+  const contractAddress = "0x02896970460425a83C70c1FBe25Be2bD9B0cc296";
   const contractABI = abi.abi;
   const [allWaves, setAllWaves] = useState([]);
 
@@ -90,6 +90,7 @@ const App = () => {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
+      alert(error.error.message);
       console.log(error);
     }
   }
