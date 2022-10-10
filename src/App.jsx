@@ -160,20 +160,24 @@ const App = () => {
           </div>
           {currentAccount ?
             (
-              <div className="flex justify-center">
-                <input
-                  className="border-2 w-1/2 rounded-lg
-                  border-grey p-2 m-2 drop-shadow-lg"
-                  type='text'
-                  placeholder="Type your wave message"
-                  onChange={(e) => setMessage(e.target.value)} />
-                <button
-                  className="p-2 m-2 rounded-lg
+              <div className="md:flex md:justify-center">
+                <div className="mx-2 text-center">
+                  <input
+                    className="p-2 m-2 border-2 w-max rounded-lg
+                  border-grey drop-shadow-lg"
+                    type='text'
+                    placeholder="Type your message"
+                    onChange={(e) => setMessage(e.target.value)} />
+                </div>
+                <div className="mx-2 text-center">
+                  <button 
+                    className="p-2 m-2 rounded-lg
                   bg-gradient-to-r from-green-400 to-green-500 
                   hover:from-green-600 hover:to-green-800 hover:text-white font-strong"
-                  onClick={wave}>
-                  Wave at Me
-                </button>
+                    onClick={wave}>
+                    Wave at Me
+                  </button>
+                </div>
 
               </div>
             )
@@ -191,14 +195,15 @@ const App = () => {
             )
           }
         </div>
-        <div className="grid grid-cols-2">
+
+        <div className="md:grid md:grid-cols-2">
           {allWaves.slice(0).reverse().map((wave, index) => {
             return (
               <div key={index} className="border-2 rounded-t-lg p-2 m-2 hover:bg-white hover:drop-shadow-lg text-white hover:text-black">
                 <h1 className="p-2 text-center font-medium">👋 {wave.message}</h1>
-                <div className="flex justify-between">
-                  <div className='p-2 w-1/3 truncate'> 👤 {wave.address}</div>
-                  <div className='p-2 w-1/3 truncate text-right'>🗓 {wave.timestamp.toLocaleString()}</div>
+                <div className="flex justify-between" title={wave.address}>
+                  <div className='m-2 w-1/3 truncate'> 👤 {wave.address}</div>
+                  <div className='m-2 w-1/3 truncate text-right'>🗓 {wave.timestamp.toLocaleString()}</div>
                 </div>
               </div>)
           })}
